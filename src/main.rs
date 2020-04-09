@@ -1,4 +1,4 @@
-use raytracing::{image::image, color};
+use raytracing::{image, color};
 use image::Image;
 use color::Color;
 
