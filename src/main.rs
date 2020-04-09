@@ -1,10 +1,19 @@
-use raytracing::{image, color};
+use raytracing::{image::image, color};
+use image::Image;
 use color::Color;
 
 fn main() {
-  image::output(vec![
-    vec![Color(255, 0, 255), Color(0, 255, 0)],
-    vec![Color(255, 0, 255), Color(0, 255, 0)],
-    vec![Color(255, 0, 255), Color(0, 255, 0)]
-  ]);
+  let size = (200, 100);
+  let mut pic = Image::new(size.0, size.1);
+
+  for x in 0..size.0 {
+    for y in 0..size.1 {
+      let r = (255 * x / size.0) as u8;
+      let g = (255 * y / size.1) as u8;
+      let b = 255 / 2;
+      pic.set_color(x, y, Color(r, g, b));
+    }
+  }
+  
+  let _ = pic.output();
 }
